@@ -2,6 +2,7 @@
 // server.js — Main entry point for ULTANGBER backend
 // This file starts the Express server and connects to MongoDB
 // ============================================================
+require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
