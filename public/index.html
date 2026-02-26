@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ULTANGBER — Educational Board Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ======================================================
+    DASHBOARD PAGE — Where players set up their game
+    Features:
+    - Select a question set from the DB
+    - Choose board size (8x8, 10x10, 12x12)
+    - Choose token color
+    - Link to create a new question set
+  ======================================================= -->
+
+  <div class="dashboard-wrapper">
+
+    <!-- Header -->
+    <header class="site-header">
+      <div class="logo">🎲 ULTANGBER</div>
+      <p class="tagline">The Educational Snake &amp; Ladder Adventure</p>
+    </header>
+
+    <!-- Main Setup Card -->
+    <main class="setup-card">
+      <h2 class="setup-title">Set Up Your Game</h2>
+
+      <!-- Step 1: Question Set -->
+      <div class="form-group">
+        <label for="questionSetSelect">📚 Question Set</label>
+        <select id="questionSetSelect">
+          <option value="">-- Loading question sets... --</option>
+        </select>
+        <a href="create-set.html" class="link-small">+ Create a new question set</a>
+      </div>
+
+      <!-- Step 2: Board Size -->
+      <div class="form-group">
+        <label>🗺 Board Size</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="boardSize" value="8" /> 8 × 8
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="boardSize" value="10" checked /> 10 × 10
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="boardSize" value="12" /> 12 × 12
+          </label>
+        </div>
+      </div>
+
+      <!-- Step 3: Token Color -->
+      <div class="form-group">
+        <label>🎨 Your Token Color</label>
+        <div class="color-picker-row">
+          <button class="color-btn selected" data-color="#e74c3c" style="background:#e74c3c" title="Red"></button>
+          <button class="color-btn" data-color="#3498db" style="background:#3498db" title="Blue"></button>
+          <button class="color-btn" data-color="#2ecc71" style="background:#2ecc71" title="Green"></button>
+          <button class="color-btn" data-color="#f39c12" style="background:#f39c12" title="Orange"></button>
+          <button class="color-btn" data-color="#9b59b6" style="background:#9b59b6" title="Purple"></button>
+        </div>
+      </div>
+
+      <!-- Start Button -->
+      <button id="startGameBtn" class="btn-primary">🚀 Start Game</button>
+      <p id="dashboardError" class="error-msg hidden"></p>
+    </main>
+
+    <!-- Info footer -->
+    <footer class="site-footer">
+      <p>Built for educational play. No account needed.</p>
+    </footer>
+
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

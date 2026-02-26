@@ -1,0 +1,14 @@
+# render.yaml — Render deployment configuration
+# This tells Render how to build and run your app
+
+services:
+  - type: web
+    name: ultangber-webapp
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGODB_URI
+        sync: false   # You'll set this manually in Render dashboard
+      - key: PORT
+        value: 3000

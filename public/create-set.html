@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ULTANGBER — Create Question Set</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="dashboard-wrapper">
+    <header class="site-header">
+      <div class="logo">🎲 ULTANGBER</div>
+      <p class="tagline">Create a Question Set</p>
+    </header>
+
+    <main class="setup-card wide-card">
+      <h2 class="setup-title">📝 New Question Set</h2>
+
+      <div class="form-group">
+        <label for="setTitle">Set Title</label>
+        <input type="text" id="setTitle" placeholder="e.g. Grade 6 Science Quiz" />
+      </div>
+
+      <div class="form-group">
+        <label for="setSubject">Subject</label>
+        <input type="text" id="setSubject" placeholder="e.g. Mathematics, Science, History" />
+      </div>
+
+      <hr class="divider" />
+
+      <div id="questionsContainer">
+        <!-- Question rows added dynamically -->
+      </div>
+
+      <button id="addQuestionBtn" class="btn-secondary">+ Add Question</button>
+
+      <p id="createError" class="error-msg hidden"></p>
+      <p id="createSuccess" class="success-msg hidden"></p>
+
+      <div class="action-row">
+        <button id="saveSetBtn" class="btn-primary">💾 Save Question Set</button>
+        <a href="index.html" class="btn-ghost-link">← Back to Dashboard</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/create-set.js"></script>
+</body>
+</html>
