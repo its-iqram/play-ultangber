@@ -219,7 +219,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## License
 
-MIT — free to use, modify, and distribute.
+MIT — NOT free to use, modify, and distribute.
 
 ---
 
