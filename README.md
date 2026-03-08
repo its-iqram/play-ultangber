@@ -226,7 +226,7 @@ This project — including its source code, game design, assets, and documentati
 - ❌ You may **not** use this project, or any derivative of it, for commercial or institutional purposes without a licence agreement.
 - ✅ Authorised collaborators may access and contribute to this repository solely under the terms agreed upon with the SEMEKAP Innovation Team.
 
-For licensing enquiries, please contact the team via [bit.ly/ultangber-student-version](https://bit.ly/ultangber-student-version).
+For licensing enquiries, please contact the team via [bit.ly/ultangber-student-edition](https://bit.ly/ultangber-student-edition).
 
 > **"HAK CIPTA TERPELIHARA"** — All intellectual property rights reserved.
 
