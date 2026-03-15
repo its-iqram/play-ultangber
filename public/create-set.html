@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ULTANGBER — Create Question Set</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="create-body">
+
+<nav class="dash-navbar">
+  <div class="dash-nav-inner">
+    <a href="index.html" class="nav-logo-link">
+      <img
+        src="https://raw.githubusercontent.com/its-iqram/ultangber/main/assets/logo.png"
+        alt="ULTANGBER"
+        class="nav-logo-img"
+        onerror="this.style.display='none';document.getElementById('createNavLogoText').style.display='block'"
+      />
+      <span id="createNavLogoText" class="nav-logo-text-fallback">ULTANGBER</span>
+    </a>
+    <a href="index.html" class="btn-back">← Back to Dashboard</a>
+  </div>
+</nav>
+
+<main class="create-main">
+
+  <div class="create-card">
+    <div class="create-card-header">
+      <span class="create-card-title">📋 Question Set Details</span>
+    </div>
+    <div class="create-card-body">
+      <div class="create-field">
+        <label class="create-label" for="setTitle">Set Title</label>
+        <input class="create-input" type="text" id="setTitle" placeholder="e.g. Grade 6 Science Quiz" />
+      </div>
+      <div class="create-field">
+        <label class="create-label" for="setSubject">Subject</label>
+        <input class="create-input" type="text" id="setSubject" placeholder="e.g. Mathematics, Science, History" />
+      </div>
+    </div>
+  </div>
+
+  <div class="create-card">
+    <div class="create-card-header">
+      <span class="create-card-title">❓ Questions</span>
+    </div>
+    <div class="create-card-body">
+      <div id="questionsContainer"></div>
+      <div class="create-btns">
+        <button class="btn-add-q" id="addQuestionBtn">+ ADD QUESTION</button>
+        <button class="btn-save-set" id="saveSetBtn">💾 SAVE SET</button>
+      </div>
+      <p class="create-error hidden" id="createError"></p>
+      <p class="create-success hidden" id="createSuccess"></p>
+    </div>
+  </div>
+
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/create-set.js"></script>
+</body>
+</html>
