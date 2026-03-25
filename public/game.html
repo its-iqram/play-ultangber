@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>ULTANGBER — Challenge Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="game-body">
+
+<div class="game-layout">
+
+  <!-- LEFT / TOP PANEL -->
+  <aside class="game-panel">
+
+    <!-- Panel header — always visible -->
+    <div class="panel-hdr">
+      <a href="index.html" class="panel-logo-link">
+        <img
+          src="https://raw.githubusercontent.com/its-iqram/ultangber/main/assets/logo.png"
+          alt="ULTANGBER"
+          class="panel-logo-img"
+          onerror="this.style.display='none';document.getElementById('panelLogoText').style.display='block'"
+        />
+        <span id="panelLogoText" class="panel-logo-text-fallback">ULTANGBER</span>
+      </a>
+      <div class="panel-hdr-right">
+        <div class="mobile-turn-wrap">
+          <span class="mobile-turn-badge" id="mobileTurnBadge">YOUR TURN</span>
+          <span class="mobile-dice" id="mobileDiceVal">🎲</span>
+        </div>
+        <button class="btn-exit" id="backToDash">✕</button>
+      </div>
+    </div>
+
+    <!-- Mobile scores + roll bar -->
+    <div class="mobile-bar">
+      <div class="mob-score" id="playerCard">
+        <div class="mob-token" id="playerTokenDot" style="background:#E74C3C"></div>
+        <div>
+          <div class="mob-name">YOU</div>
+          <div class="mob-pos">SQ <strong id="playerPosNum">1</strong></div>
+        </div>
+      </div>
+      <span class="mob-vs">VS</span>
+      <div class="mob-score" id="robotCard">
+        <div class="mob-token" style="background:#888"></div>
+        <div>
+          <div class="mob-name">ROBOT</div>
+          <div class="mob-pos">SQ <strong id="robotPosNum">1</strong></div>
+        </div>
+      </div>
+      <button class="btn-roll-mob" id="rollDiceBtn">🎲 ROLL</button>
+    </div>
+
+    <!-- Desktop sidebar body -->
+    <div class="panel-body">
+
+      <div class="player-card active-turn" id="playerCardDesktop">
+        <div class="player-token" id="playerTokenDotDesktop" style="background:#E74C3C"></div>
+        <div class="player-info">
+          <div class="player-name">YOU</div>
+          <div class="player-pos-row">
+            <span class="pos-lbl">SQ</span>
+            <span class="pos-num" id="playerPosNumDesktop">1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-card" id="robotCardDesktop">
+        <div class="player-token" style="background:#888"></div>
+        <div class="player-info">
+          <div class="player-name">ROBOT</div>
+          <div class="player-pos-row">
+            <span class="pos-lbl">SQ</span>
+            <span class="pos-num" id="robotPosNumDesktop">1</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="panel-divider">STATUS</p>
+
+      <div class="status-card">
+        <div class="status-turn" id="turnLabel">YOUR TURN</div>
+        <div class="status-dice" id="diceDisplay">🎲</div>
+        <div class="status-msg" id="statusMsg">Roll the dice to begin!</div>
+      </div>
+
+      <button class="btn-roll-desk" id="rollDiceBtnDesktop">🎲 ROLL DICE</button>
+
+      <p class="panel-divider">SQUARE TYPES</p>
+
+      <div class="sq-type-list">
+        <div class="sq-type-row"><span>🪜</span> Ladder — Move forward</div>
+        <div class="sq-type-row"><span>🐍</span> Snake — Move back</div>
+        <div class="sq-type-row"><span>➕</span> Bonus — Extra steps</div>
+        <div class="sq-type-row"><span>➖</span> Penalty — Steps back</div>
+        <div class="sq-type-row"><span>🧊</span> Freeze — Skip turn</div>
+      </div>
+
+    </div>
+
+  </aside>
+
+  <!-- BOARD AREA -->
+  <main class="board-area">
+    <div class="board-topbar">
+      <span class="board-topbar-title">⚔ CHALLENGE BOARD</span>
+      <span class="board-topbar-size" id="boardSizeLabel">10 × 10</span>
+    </div>
+    <div class="board-scroll-wrap">
+      <div id="gameBoard" class="game-board"></div>
+    </div>
+    <div class="mob-status-bar" id="mobileStatusBar">Roll the dice to start!</div>
+  </main>
+
+</div>
+
+<!-- QUESTION MODAL -->
+<div class="modal-overlay hidden" id="questionModal">
+  <div class="modal-sheet">
+    <div class="modal-topbar">
+      <span class="modal-sq-name" id="modalSquareLabel">🪜 LADDER</span>
+      <span class="modal-diff-tag Easy" id="modalDiff">Easy</span>
+    </div>
+    <div class="modal-content">
+      <p class="modal-hint">Answer correctly to apply the square effect:</p>
+      <div class="question-box">
+        <p id="questionText">Loading…</p>
+      </div>
+      
+      <!-- ANSWER INPUT WRAPPER (for open-ended questions) -->
+      <div id="answerInputWrap">
+        <input
+          type="text"
+          class="answer-field"
+          id="answerInput"
+          placeholder="Type your answer…"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+        />
+      </div>
+      
+      <!-- MCQ CHOICES WRAPPER (for multiple choice questions) -->
+      <div id="mcqChoicesWrap" class="hidden"></div>
+      
+    </div>
+    <div class="modal-actions">
+      <button class="btn-submit" id="submitAnswerBtn">✅ SUBMIT</button>
+      <button class="btn-flag" id="reportBtn">🚩 Report</button>
+    </div>
+    <div class="report-panel hidden" id="reportZone">
+      <label class="report-label">Describe the problem:</label>
+      <textarea class="report-textarea" id="reportReason" placeholder="e.g. incorrect answer, unclear wording…"></textarea>
+      <button class="btn-send-report" id="submitReportBtn">SEND REPORT</button>
+      <p class="report-feedback hidden" id="reportMsg"></p>
+    </div>
+  </div>
+</div>
+
+<!-- GAME OVER MODAL -->
+<div class="modal-overlay hidden" id="gameOverModal">
+  <div class="gameover-card">
+    <div class="gameover-topbar">ULTANGBER · CHALLENGE BOARD · GAME OVER</div>
+    <div class="gameover-body">
+      <span class="gameover-emoji" id="gameOverEmoji">🏆</span>
+      <h2 class="gameover-title" id="gameOverTitle">YOU WIN!</h2>
+      <p class="gameover-desc" id="gameOverMsg">Excellent! You reached the final square first!</p>
+      <button class="btn-play-again" id="playAgainBtn">🔄 PLAY AGAIN</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
